@@ -1,0 +1,603 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-11-09"><meta name="DC.source" content="HW.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> varargout = HW(varargin)
+<span class="comment">% HW MATLAB code for HW.fig</span>
+<span class="comment">%      HW, by itself, creates a new HW or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = HW returns the handle to a new HW or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      HW('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in HW.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      HW('Property','Value',...) creates a new HW or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before HW_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to HW_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help HW</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 09-Nov-2020 09:46:12</span>
+
+<span class="comment">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @HW_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @HW_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+
+
+<span class="comment">% --- Executes just before HW is made visible.</span>
+<span class="keyword">function</span> HW_OpeningFcn(hObject, eventdata, handles, varargin)
+<span class="comment">% This function has no output args, see OutputFcn.</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">% varargin   command line arguments to HW (see VARARGIN)</span>
+
+<span class="comment">% Choose default command line output for HW</span>
+handles.output = hObject;
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% UIWAIT makes HW wait for user response (see UIRESUME)</span>
+<span class="comment">% uiwait(handles.figure1);</span>
+
+
+<span class="comment">% --- Outputs from this function are returned to the command line.</span>
+<span class="keyword">function</span> varargout = HW_OutputFcn(hObject, eventdata, handles)
+<span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+
+
+<span class="comment">% --- Executes on button press in inputImage.</span>
+<span class="keyword">function</span> inputImage_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to inputImage (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> img col row;
+<span class="comment">%&#36664;&#20837;&#34892;&#21015;&#20540;</span>
+EnterRC;
+waitfor(EnterRC);
+mainGui = findobj(<span class="string">'Name'</span>,<span class="string">'HW'</span>);
+col=getappdata(mainGui,<span class="string">'col'</span>);
+row=getappdata(mainGui,<span class="string">'row'</span>);
+<span class="comment">%&#21295;&#20837;&#24433;&#20687;</span>
+[imagefile,imagepath]=uigetfile(<span class="string">'*.*'</span>);
+fid=fopen([imagepath,imagefile],<span class="string">'rb'</span>);
+imgOrigin=fread(fid,[col,row]);
+img=imgOrigin';
+fclose(fid);
+imshow(img,[],<span class="string">'Parent'</span>,handles.axes1);
+set(handles.text1,<span class="string">'string'</span>,imagefile);
+set(handles.textOrigin,<span class="string">'string'</span>,col+<span class="string">"&times;"</span>+row);
+
+<span class="comment">% --- Executes on button press in model.</span>
+<span class="keyword">function</span> model_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to model (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> img col row;
+<span class="comment">%&#32362;&#35069;3D&#27169;&#22411;</span>
+Z=img;
+[X,Y]=meshgrid(1:col,1:row);
+axes(handles.axes2);
+surf(X,Y,Z);
+xlabel(<span class="string">"x axis"</span>);
+ylabel(<span class="string">"y axis"</span>);
+zlabel(<span class="string">"gray value"</span>);
+
+<span class="comment">% --- Executes on button press in calculateCenter.</span>
+<span class="keyword">function</span> calculateCenter_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to calculateCenter (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> img x y;
+<span class="comment">%&#35336;&#31639;&#28784;&#24230;&#20540;&#30340;&#26368;&#23567;&#20540;&#12289;&#24179;&#22343;&#20540;&#12289;&#33256;&#30028;&#20540;</span>
+gmin=roundn(min(min(img)),-2);
+set(handles.txt_g_min,<span class="string">'string'</span>,gmin);
+gmean=roundn(mean(mean(img)),-2);
+set(handles.txt_g_mean,<span class="string">'string'</span>,gmean);
+gS=roundn((gmin+gmean)/2,-2);
+set(handles.txt_g_s,<span class="string">'string'</span>,gS);
+<span class="comment">%&#21462;&#24471;&#24433;&#20687;&#22823;&#23567;</span>
+[img1r,img1c]=size(img);
+<span class="comment">%&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#26178;&#28858;1&#65292;&#23567;&#26044;&#21063;&#28858;0</span>
+img1(img&lt;=gS)=0;
+img1(img&gt;gS)=1;
+<span class="comment">%&#35336;&#31639;&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#24471;&#20687;&#20803;&#25976;</span>
+num1=sum(img1==1);
+set(handles.txt_num_thre,<span class="string">'string'</span>,num1);
+<span class="comment">%&#35336;&#31639;&#32317;&#20687;&#20803;&#25976;</span>
+sumPixels1=numel(img1);
+set(handles.txt_pixels,<span class="string">'string'</span>,sumPixels1);
+<span class="comment">%&#35336;&#31639;&#28784;&#24230;&#37325;&#24515;x&#12289;y&#24231;&#27161;</span>
+img1=reshape(img1,[img1r,img1c]);
+sub1=img-gS;
+M1=sum(sum(img1.*sub1));
+x=roundn((1/M1)*sum(sum([1:img1c].*img1.*sub1)),-3);
+set(handles.txt_x,<span class="string">'string'</span>,x);
+y=roundn((1/M1)*sum(sum([1:img1r]'.*img1.*sub1)),-3);
+set(handles.txt_y,<span class="string">'string'</span>,y);
+<span class="comment">%&#22312;&#22294;&#19978;&#32362;&#35069;&#32005;&#33394;&#21313;&#23383;</span>
+axes(handles.axes1);
+hold <span class="string">on</span>;
+plot(x,y,<span class="string">'r+'</span>,<span class="string">'LineWidth'</span>,1);
+hold <span class="string">off</span>;
+
+
+<span class="comment">% --- Executes on button press in cutImage.</span>
+<span class="keyword">function</span> cutImage_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to cutImage (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> imgCut colCut rowCut ;
+<span class="comment">%&#20999;&#21462;&#21407;&#24433;&#20687;</span>
+axes(handles.axes1);
+imgCut=imcrop;
+<span class="comment">%&#36664;&#20986;&#20999;&#21462;&#24460;&#24433;&#20687;</span>
+imshow(imgCut,[],<span class="string">'Parent'</span>,handles.axes3);
+[rowCut,colCut]=size(imgCut);
+set(handles.textCut,<span class="string">'string'</span>,colCut+<span class="string">"&times;"</span>+rowCut);
+
+<span class="comment">% --- Executes on button press in calculateCutCenter.</span>
+<span class="keyword">function</span> calculateCutCenter_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to calculateCutCenter (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> imgCut colCut rowCut;
+<span class="comment">%&#35336;&#31639;&#20999;&#21462;&#24460;&#24433;&#20687;&#28784;&#24230;&#20540;&#30340;&#26368;&#23567;&#20540;&#12289;&#24179;&#22343;&#20540;&#12289;&#33256;&#30028;&#20540;</span>
+gminCut=roundn(min(min(imgCut)),-2);
+set(handles.txt_g_min,<span class="string">'string'</span>,gminCut);
+gmeanCut=roundn(mean(mean(imgCut)),-2);
+set(handles.txt_g_mean,<span class="string">'string'</span>,gmeanCut);
+gSCut=roundn((gminCut+gmeanCut)/2,-2);
+set(handles.txt_g_s,<span class="string">'string'</span>,gSCut);
+<span class="comment">%&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#26178;&#28858;1&#65292;&#23567;&#26044;&#21063;&#28858;0</span>
+img2(imgCut&lt;=gSCut)=0;
+img2(imgCut&gt;gSCut)=1;
+<span class="comment">%&#35336;&#31639;&#20999;&#21462;&#24460;&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#24471;&#20687;&#20803;&#25976;</span>
+num2=sum(img2==1);
+set(handles.txt_num_thre,<span class="string">'string'</span>,num2);
+<span class="comment">%&#35336;&#31639;&#20999;&#21462;&#24460;&#32317;&#20687;&#20803;&#25976;</span>
+sumPixels2=numel(img2);
+set(handles.txt_pixels,<span class="string">'string'</span>,sumPixels2);
+<span class="comment">%&#35336;&#31639;&#20999;&#21462;&#24460;&#24433;&#20687;&#28784;&#24230;&#37325;&#24515;x&#12289;y&#24231;&#27161;</span>
+img2=reshape(img2,[rowCut,colCut]);
+sub2=imgCut-gSCut;
+M2=sum(sum(img2.*sub2));
+xCut=roundn((1/M2)*sum(sum([1:colCut].*img2.*sub2)),-3);
+set(handles.txt_x,<span class="string">'string'</span>,xCut);
+yCut=roundn((1/M2)*sum(sum([1:rowCut]'.*img2.*sub2)),-3);
+set(handles.txt_y,<span class="string">'string'</span>,yCut);
+<span class="comment">%&#22312;&#22294;&#19978;&#32362;&#35069;&#40643;&#33394;&#21313;&#23383;</span>
+axes(handles.axes3);
+hold <span class="string">on</span>;
+plot(xCut,yCut,<span class="string">'y+'</span>,<span class="string">'LineWidth'</span>,1);
+hold <span class="string">off</span>;
+
+
+<span class="comment">% --- Executes on button press in resizeImage.</span>
+<span class="keyword">function</span> resizeImage_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to resizeImage (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> img imgResized colResized rowResized;
+<span class="comment">%&#36664;&#20837;&#20877;&#21462;&#27171;&#30340;&#34892;&#21015;&#20540;</span>
+EnterRC;
+waitfor(EnterRC);
+mainGui = findobj(<span class="string">'Name'</span>,<span class="string">'HW'</span>);
+colResized=getappdata(mainGui,<span class="string">'col'</span>);
+rowResized=getappdata(mainGui,<span class="string">'row'</span>);
+<span class="comment">%&#36664;&#20986;&#20877;&#21462;&#27171;&#24433;&#20687;</span>
+imgResized=imresize(img,[rowResized colResized]);
+imshow(imgResized,[],<span class="string">'Parent'</span>,handles.axes4);
+set(handles.textResized,<span class="string">'string'</span>,colResized+<span class="string">"&times;"</span>+rowResized);
+
+<span class="comment">% --- Executes on button press in calculateResizeCenter.</span>
+<span class="keyword">function</span> calculateResizeCenter_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to calculateResizeCenter (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> imgResized colResized rowResized;
+<span class="comment">%&#35336;&#31639;&#20877;&#21462;&#27171;&#24460;&#24433;&#20687;&#28784;&#24230;&#20540;&#30340;&#26368;&#23567;&#20540;&#12289;&#24179;&#22343;&#20540;&#12289;&#33256;&#30028;&#20540;</span>
+gminResized=roundn(min(min(imgResized)),-2);
+set(handles.txt_g_min,<span class="string">'string'</span>,gminResized);
+gmeanResized=roundn(mean(mean(imgResized)),-2);
+set(handles.txt_g_mean,<span class="string">'string'</span>,gmeanResized);
+gSResized=roundn((gminResized+gmeanResized)/2,-2);
+set(handles.txt_g_s,<span class="string">'string'</span>,gSResized);
+<span class="comment">%&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#26178;&#28858;1&#65292;&#23567;&#26044;&#21063;&#28858;0</span>
+img3(imgResized&lt;=gSResized)=0;
+img3(imgResized&gt;gSResized)=1;
+<span class="comment">%&#35336;&#31639;&#20877;&#21462;&#27171;&#24460;&#28784;&#24230;&#20540;&#22823;&#26044;&#33256;&#30028;&#20540;&#24471;&#20687;&#20803;&#25976;</span>
+num3=sum(img3==1);
+set(handles.txt_num_thre,<span class="string">'string'</span>,num3);
+<span class="comment">%&#35336;&#31639;&#20877;&#21462;&#27171;&#24460;&#32317;&#20687;&#20803;&#25976;</span>
+sumPixels3=numel(img3);
+set(handles.txt_pixels,<span class="string">'string'</span>,sumPixels3);
+<span class="comment">%&#35336;&#31639;&#20877;&#21462;&#27171;&#24460;&#24433;&#20687;&#28784;&#24230;&#37325;&#24515;x&#12289;y&#24231;&#27161;</span>
+img3=reshape(img3,[rowResized,colResized]);
+sub3=imgResized-gSResized;
+M3=sum(sum(img3.*sub3));
+xResized=roundn((1/M3)*sum(sum([1:colResized].*img3.*sub3)),-3);
+set(handles.txt_x,<span class="string">'string'</span>,xResized);
+yResized=roundn((1/M3)*sum(sum([1:rowResized]'.*img3.*sub3)),-3);
+set(handles.txt_y,<span class="string">'string'</span>,yResized);
+<span class="comment">%&#22312;&#22294;&#19978;&#32362;&#35069;&#40643;&#33394;&#21313;&#23383;</span>
+axes(handles.axes4);
+hold <span class="string">on</span>;
+plot(xResized,yResized,<span class="string">'g+'</span>,<span class="string">'LineWidth'</span>,1);
+hold <span class="string">off</span>;
+
+
+<span class="comment">% --- Executes when user attempts to close figure1.</span>
+<span class="keyword">function</span> figure1_CloseRequestFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to figure1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hint: delete(hObject) closes the figure</span>
+delete(hObject);
+clear <span class="string">global</span>;
+</pre><img vspace="5" hspace="5" src="HW_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function varargout = HW(varargin)
+% HW MATLAB code for HW.fig
+%      HW, by itself, creates a new HW or raises the existing
+%      singleton*.
+%
+%      H = HW returns the handle to a new HW or the handle to
+%      the existing singleton*.
+%
+%      HW('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in HW.M with the given input arguments.
+%
+%      HW('Property','Value',...) creates a new HW or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before HW_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to HW_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help HW
+
+% Last Modified by GUIDE v2.5 09-Nov-2020 09:46:12
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @HW_OpeningFcn, ...
+                   'gui_OutputFcn',  @HW_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% REPLACE_WITH_DASH_DASH- Executes just before HW is made visible.
+function HW_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to HW (see VARARGIN)
+
+% Choose default command line output for HW
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes HW wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% REPLACE_WITH_DASH_DASH- Outputs from this function are returned to the command line.
+function varargout = HW_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in inputImage.
+function inputImage_Callback(hObject, eventdata, handles)
+% hObject    handle to inputImage (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global img col row;
+%輸入行列值
+EnterRC;
+waitfor(EnterRC);
+mainGui = findobj('Name','HW');
+col=getappdata(mainGui,'col');
+row=getappdata(mainGui,'row');
+%匯入影像
+[imagefile,imagepath]=uigetfile('*.*');
+fid=fopen([imagepath,imagefile],'rb');
+imgOrigin=fread(fid,[col,row]);
+img=imgOrigin';
+fclose(fid);
+imshow(img,[],'Parent',handles.axes1);
+set(handles.text1,'string',imagefile);
+set(handles.textOrigin,'string',col+"×"+row);
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in model.
+function model_Callback(hObject, eventdata, handles)
+% hObject    handle to model (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global img col row;
+%繪製3D模型
+Z=img;
+[X,Y]=meshgrid(1:col,1:row);
+axes(handles.axes2);
+surf(X,Y,Z);
+xlabel("x axis");
+ylabel("y axis");
+zlabel("gray value");
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in calculateCenter.
+function calculateCenter_Callback(hObject, eventdata, handles)
+% hObject    handle to calculateCenter (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global img x y;
+%計算灰度值的最小值、平均值、臨界值
+gmin=roundn(min(min(img)),-2);
+set(handles.txt_g_min,'string',gmin);
+gmean=roundn(mean(mean(img)),-2);
+set(handles.txt_g_mean,'string',gmean);
+gS=roundn((gmin+gmean)/2,-2);
+set(handles.txt_g_s,'string',gS);
+%取得影像大小
+[img1r,img1c]=size(img);
+%灰度值大於臨界值時為1，小於則為0
+img1(img<=gS)=0;
+img1(img>gS)=1;
+%計算灰度值大於臨界值得像元數
+num1=sum(img1==1);
+set(handles.txt_num_thre,'string',num1);
+%計算總像元數
+sumPixels1=numel(img1);
+set(handles.txt_pixels,'string',sumPixels1);
+%計算灰度重心x、y座標
+img1=reshape(img1,[img1r,img1c]);
+sub1=img-gS;
+M1=sum(sum(img1.*sub1));
+x=roundn((1/M1)*sum(sum([1:img1c].*img1.*sub1)),-3);
+set(handles.txt_x,'string',x);
+y=roundn((1/M1)*sum(sum([1:img1r]'.*img1.*sub1)),-3);
+set(handles.txt_y,'string',y);
+%在圖上繪製紅色十字
+axes(handles.axes1);
+hold on;
+plot(x,y,'r+','LineWidth',1);
+hold off;
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in cutImage.
+function cutImage_Callback(hObject, eventdata, handles)
+% hObject    handle to cutImage (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global imgCut colCut rowCut ;
+%切取原影像
+axes(handles.axes1);
+imgCut=imcrop;
+%輸出切取後影像
+imshow(imgCut,[],'Parent',handles.axes3);
+[rowCut,colCut]=size(imgCut);
+set(handles.textCut,'string',colCut+"×"+rowCut);
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in calculateCutCenter.
+function calculateCutCenter_Callback(hObject, eventdata, handles)
+% hObject    handle to calculateCutCenter (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global imgCut colCut rowCut;
+%計算切取後影像灰度值的最小值、平均值、臨界值
+gminCut=roundn(min(min(imgCut)),-2);
+set(handles.txt_g_min,'string',gminCut);
+gmeanCut=roundn(mean(mean(imgCut)),-2);
+set(handles.txt_g_mean,'string',gmeanCut);
+gSCut=roundn((gminCut+gmeanCut)/2,-2);
+set(handles.txt_g_s,'string',gSCut);
+%灰度值大於臨界值時為1，小於則為0
+img2(imgCut<=gSCut)=0;
+img2(imgCut>gSCut)=1;
+%計算切取後灰度值大於臨界值得像元數
+num2=sum(img2==1);
+set(handles.txt_num_thre,'string',num2);
+%計算切取後總像元數
+sumPixels2=numel(img2);
+set(handles.txt_pixels,'string',sumPixels2);
+%計算切取後影像灰度重心x、y座標
+img2=reshape(img2,[rowCut,colCut]);
+sub2=imgCut-gSCut;
+M2=sum(sum(img2.*sub2));
+xCut=roundn((1/M2)*sum(sum([1:colCut].*img2.*sub2)),-3);
+set(handles.txt_x,'string',xCut);
+yCut=roundn((1/M2)*sum(sum([1:rowCut]'.*img2.*sub2)),-3);
+set(handles.txt_y,'string',yCut);
+%在圖上繪製黃色十字
+axes(handles.axes3);
+hold on;
+plot(xCut,yCut,'y+','LineWidth',1);
+hold off;
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in resizeImage.
+function resizeImage_Callback(hObject, eventdata, handles)
+% hObject    handle to resizeImage (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global img imgResized colResized rowResized;
+%輸入再取樣的行列值
+EnterRC;
+waitfor(EnterRC);
+mainGui = findobj('Name','HW');
+colResized=getappdata(mainGui,'col');
+rowResized=getappdata(mainGui,'row');
+%輸出再取樣影像
+imgResized=imresize(img,[rowResized colResized]);
+imshow(imgResized,[],'Parent',handles.axes4);
+set(handles.textResized,'string',colResized+"×"+rowResized);
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in calculateResizeCenter.
+function calculateResizeCenter_Callback(hObject, eventdata, handles)
+% hObject    handle to calculateResizeCenter (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global imgResized colResized rowResized;
+%計算再取樣後影像灰度值的最小值、平均值、臨界值
+gminResized=roundn(min(min(imgResized)),-2);
+set(handles.txt_g_min,'string',gminResized);
+gmeanResized=roundn(mean(mean(imgResized)),-2);
+set(handles.txt_g_mean,'string',gmeanResized);
+gSResized=roundn((gminResized+gmeanResized)/2,-2);
+set(handles.txt_g_s,'string',gSResized);
+%灰度值大於臨界值時為1，小於則為0
+img3(imgResized<=gSResized)=0;
+img3(imgResized>gSResized)=1;
+%計算再取樣後灰度值大於臨界值得像元數
+num3=sum(img3==1);
+set(handles.txt_num_thre,'string',num3);
+%計算再取樣後總像元數
+sumPixels3=numel(img3);
+set(handles.txt_pixels,'string',sumPixels3);
+%計算再取樣後影像灰度重心x、y座標
+img3=reshape(img3,[rowResized,colResized]);
+sub3=imgResized-gSResized;
+M3=sum(sum(img3.*sub3));
+xResized=roundn((1/M3)*sum(sum([1:colResized].*img3.*sub3)),-3);
+set(handles.txt_x,'string',xResized);
+yResized=roundn((1/M3)*sum(sum([1:rowResized]'.*img3.*sub3)),-3);
+set(handles.txt_y,'string',yResized);
+%在圖上繪製黃色十字
+axes(handles.axes4);
+hold on;
+plot(xResized,yResized,'g+','LineWidth',1);
+hold off;
+
+
+% REPLACE_WITH_DASH_DASH- Executes when user attempts to close figure1.
+function figure1_CloseRequestFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: delete(hObject) closes the figure
+delete(hObject);
+clear global;
+
+##### SOURCE END #####
+--></body></html>
